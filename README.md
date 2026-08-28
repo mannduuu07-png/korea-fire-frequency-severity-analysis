@@ -14,3 +14,5 @@ fire prevention and inspection.
 ## Current Stage
 Project scope and research questions defined.
 Data discovery in progress.
+
+
