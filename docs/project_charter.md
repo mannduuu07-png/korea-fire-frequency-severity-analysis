@@ -1,16 +1,18 @@
-Project:
-Urban Fire Risk & Prevention Analytics
+Project: Korea Fire Frequency-Severity Analysis
 
-Scope:
-전국
+Scope: Nationwide (시군구-level), 2015-2024
 
-Core Problem:
-화재 발생빈도는 지역의 피해위험을 설명하는가?
+Core Problem: Does fire frequency explain a region's damage risk?
 
-Goal:
-화재 발생 빈도와 피해 수준을 분석하고,
-건축물·지역 특성과 결합해 예방 및 점검 우선순위 판단에
-데이터가 얼마나 도움이 될 수 있는지 탐색한다.
+Goal: Analyze the relationship between fire occurrence frequency and
+damage severity, and explore whether combining this with structural
+factors (building age, demographics, fire station accessibility) can
+support prevention and inspection prioritization decisions.
 
-Non-goal:
-다음 화재 발생을 정확히 예측하는 시스템을 만드는 것이 아니다.
+Phase 1 (current): Establish and validate the frequency-severity
+relationship using existing fire statistics alone.
+Phase 2 (future): Incorporate structural covariates and build a
+predictive model.
+
+Non-goal: This is not a real-time prediction service or production
+deployment system.
