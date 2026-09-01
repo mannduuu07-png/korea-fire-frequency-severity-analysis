@@ -24,12 +24,12 @@ different labels:
   2024-01-01 — for 2016-2023, records used unified "부천시" with no
   sub-district; for other years, sub-district names were used
 
-Before this fix, e.g. "강원도 원주시" (955 records) and "강원특별자치도
-원주시" (2263 records) were treated as two separate regions, both
-below several sample-size thresholds used in the analysis, hiding a
-real pattern: once merged, Gangwon-province cities emerged as a
-distinct cluster in the excess-risk analysis (5 of the top 15 regions
-in 05_excess_risk_analysis.ipynb).
+Before this fix, "강원도 원주시" (2,263 records) and "강원특별자치도
+원주시" (955 records) were treated as two separate regions, each
+producing its own (incorrect) excess-risk ratio and ranking. Once
+merged, 원주시's 10-year cumulative fire count was correctly
+recalculated at 3,218 records, revealing a real pattern that had
+been obscured by the split.
 
 Fixed by normalizing all four cases to a single consistent
 (시도, 시군구) identity in 01_data_cleaning.ipynb before any
