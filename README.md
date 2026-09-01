@@ -12,11 +12,10 @@ volume-based prioritization would miss entirely.
 ## Key Findings
 * Nationwide trend: fires down 11.7%, property damage up 116.6% (2015-17 vs 2022-24 avg); death counts flat.
 * Fire frequency doesn't reliably predict severity: weak, not statistically significant correlation (ρ=0.05, p=0.42) between fire count and per-fire casualties — holds across every threshold and time period tested (see `03_frequency_vs_severity.ipynb`, `04_robustness_checks.ipynb`).
-* 청주시상당구 is the strongest individual case: the only region flagged as high-severity in both 2015-19 and 2020-24, with 1.6-2.3x excess casualty risk beyond what its place-type mix predicts.
+* 청주시상당구 is the most consistent individual case across sensitivity checks: the only region flagged as high-severity in both 2015-19 and 2020-24, with 1.6-2.3x excess casualty risk beyond what its place-type mix predicts (no confidence interval has been computed, so chance is not formally ruled out).
 * 21 regions show excess risk ≥1.3x, forming a candidate priority list — though only 청주시상당구 is cross-validated across time periods; treat the rest as exploratory.
-* A 강원특별자치도 cluster emerged after fixing a region-naming bug that had been splitting Gangwon-province cities into under-threshold entries (see `docs/validation_log.md`).
-* Confirmed annual seasonality: fires peak in March and winter months, statistically confirmed via STL/ACF — not just an artifact of averaging across years.
-
+* Five Gangwon-province regions appeared among the top 15 exploratory excess-risk candidates — a pattern invisible before an administrative-boundary naming bug (강원도 → 강원특별자치도, 2023) was fixed, because affected regions were being split into two separate entries with independently miscalculated excess-risk values (see `docs/validation_log.md`).
+* Seasonality supported by STL decomposition and ACF (lag=12: ρ=0.49; lag=24: ρ=0.46, both significant at α=0.05) — fires peak in March and winter months.
 
 ## Data
 **Source**: 소방청 (Korea National Fire Agency) 연간화재통계 (Annual Fire
