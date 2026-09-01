@@ -1,17 +1,23 @@
 # AI Assistance
 
-AI tools were used as review aids for debugging, documentation, and
-methodological critique.
+This project was developed collaboratively with AI tools across problem
+framing, code drafting, debugging, statistical-method review, and
+documentation.
 
-Examples include:
+AI tools were used to:
 
-- reviewing region-identification logic and administrative-name changes;
-- checking notebook execution order and data-processing code;
-- reviewing statistical interpretations and identifying claims that
-  required additional qualification;
-- improving documentation clarity.
+- suggest and review statistical approaches;
+- draft and refactor Python code;
+- identify data-quality and methodological issues;
+- challenge interpretations and improve documentation.
 
-All data processing, code execution, interpretation, and final analysis
-decisions were performed and verified by the author. Results were
-recomputed after each methodological change and checked against the
-underlying data.
+The author selected and obtained the datasets, executed the notebooks,
+inspected the outputs, and made the final decisions regarding the
+analysis scope, assumptions, and interpretation. AI-generated code and
+suggestions were reviewed rather than accepted automatically, and the
+analysis was rerun after methodological changes.
+
+Examples of issues identified through this review process include
+non-unique district names, administrative-boundary changes, notebook
+execution-order errors, and claims that required more cautious
+interpretation. These changes are documented in `validation_log.md`.
