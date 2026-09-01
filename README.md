@@ -1,11 +1,6 @@
 # Korea Fire Frequency-Severity Analysis
 
-**Does fire frequency explain a region's damage risk?** Analysis of
-10 years (2015–2024) of nationwide Korean fire statistics shows the
-answer is largely no — fire frequency and per-fire casualty severity
-are only weakly, and not statistically significantly, related. A
-small number of regions show persistently high casualty rates that
-volume-based prioritization would miss entirely.
+**Does fire frequency explain a region's damage risk?** Analysis of 10 years (2015–2024) of nationwide Korean fire statistics found **little evidence of a strong or stable association between regional fire frequency and per-fire casualty severity.** A small number of regions show persistently high casualty rates that volume-based prioritization would miss entirely.
 
 ![Frequency vs Severity](frequency_vs_severity_scatter.png)
 
