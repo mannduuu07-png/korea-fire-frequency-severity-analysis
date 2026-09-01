@@ -7,7 +7,7 @@ are only weakly correlated, and a small number of regions show
 persistently high casualty rates that volume-based prioritization
 would miss entirely.
 
-![Frequency vs Severity](outputs/figures/frequency_vs_severity_scatter.png)
+![Frequency vs Severity](frequency_vs_severity_scatter.png)
 
 ## Key Findings
 
