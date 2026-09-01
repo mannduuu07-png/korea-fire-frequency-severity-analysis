@@ -34,22 +34,7 @@ would miss entirely.
   cycle, not noise in year-by-year averages.
 
 ## Repository Structure
-notebooks/
-├── 01_data_cleaning.ipynb # load, clean, unify 10 years of raw files
-├── 02_temporal_analysis.ipynb # national trends, seasonality, STL/ACF
-├── 03_frequency_vs_severity.ipynb # core correlation analysis, quadrant plot
-├── 04_robustness_checks.ipynb # threshold sensitivity, period-split test
-└── 05_excess_risk_analysis.ipynb # place-mix-controlled excess risk, priority list
-docs/
-├── project_charter.md
-├── decision_log.md
-├── data_inventory.md
-├── data_dictionary.md
-├── validation_log.md
-└── ai_assistance.md
-outputs/
-├── figures/
-└── tables/priority_regions.csv
+
 
 ## Data
 **Source**: 소방청 (Korea National Fire Agency) 연간화재통계 (Annual Fire
