@@ -16,4 +16,3 @@ Project scope and research questions defined.
 Data discovery in progress.
 
 
-![Frequency vs Severity](outputs/figures/frequency_vs_severity_scatter.png)
