@@ -2,10 +2,10 @@ Project:
 Urban Fire Risk & Prevention Analytics
 
 Scope:
-서울특별시 / 화재 / 지역 단위 분석
+전국
 
 Core Problem:
-제한된 예방·점검 자원을 어느 지역에 우선적으로 배분해야 하는가?
+화재 발생빈도는 지역의 피해위험을 설명하는가?
 
 Goal:
 화재 발생 빈도와 피해 수준을 분석하고,
