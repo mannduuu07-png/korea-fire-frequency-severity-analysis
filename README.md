@@ -7,43 +7,15 @@ are only weakly, and not statistically significantly, related. A
 small number of regions show persistently high casualty rates that
 volume-based prioritization would miss entirely.
 
-![Frequency vs Severity](outputs/figures/frequency_vs_severity_scatter.png)
+![Frequency vs Severity](frequency_vs_severity_scatter.png)
 
 ## Key Findings
-- **Nationwide trend**: fire count down 11.7% (2015–17 avg vs
-  2022–24 avg), while property damage rose 116.6% (nominal terms).
-  Death counts were flat (+3.2%, not a meaningful trend).
-- **Fire frequency does not reliably predict per-fire casualty
-  severity**: Spearman correlation between cumulative fire count and
-  casualties-per-100-fires is ρ=0.051 (p=0.424, not significant) in
-  the primary analysis (247 regions, 300+ cumulative fires). This
-  holds regardless of sampling threshold (ρ=0.05–0.07, p>0.29 at
-  200/300/500-fire thresholds) and weakens further when the period is
-  split (2015–19: ρ=0.043, p=0.504; 2020–24: ρ=0.121, p=0.058,
-  borderline).
-- **청주시상당구 (Cheongju Sangdang-gu) is the strongest individual
-  case**: the only region that appears in the high-severity top 10 in
-  *both* the 2015–19 and 2020–24 sub-periods, and shows 2.26x excess
-  casualty risk versus what its place-type mix (residential/
-  industrial/etc.) would predict — 1.59x even after excluding its
-  single worst incident. Not explained by chance, a mass-casualty
-  outlier, a sampling threshold, or the kinds of places its fires
-  occur in.
-- **21 regions** show excess risk ≥1.3x under the same place-mix
-  control (leave-one-region-out baseline), forming a candidate
-  priority list — though only 청주시상당구 has been cross-validated
-  against the time-period split; treat the rest as exploratory.
-- **A 강원특별자치도 (Gangwon) cluster emerged after fixing a region-
-  naming bug**: 5 of the top 15 excess-risk regions (삼척시, 양양군,
-  원주시, 태백시, 춘천시) are in Gangwon province — a pattern that was
-  invisible before administrative-boundary name changes (e.g. 강원도 →
-  강원특별자치도, 2023) were corrected, because affected regions were
-  being split into two separate, under-threshold entries. See
-  `docs/validation_log.md`.
-- **Confirmed annual seasonality**: fires peak in March and winter
-  months; STL decomposition and ACF (lag=12: ρ=0.49; lag=24: ρ=0.46,
-  both significant at α=0.05) confirm this is a genuine recurring
-  cycle, not noise in year-by-year averages.
+* Nationwide trend: fires down 11.7%, property damage up 116.6% (2015-17 vs 2022-24 avg); death counts flat.
+* Fire frequency doesn't reliably predict severity: weak, not statistically significant correlation (ρ=0.05, p=0.42) between fire count and per-fire casualties — holds across every threshold and time period tested (see `03_frequency_vs_severity.ipynb`, `04_robustness_checks.ipynb`).
+* 청주시상당구 is the strongest individual case: the only region flagged as high-severity in both 2015-19 and 2020-24, with 1.6-2.3x excess casualty risk beyond what its place-type mix predicts.
+* 21 regions show excess risk ≥1.3x, forming a candidate priority list — though only 청주시상당구 is cross-validated across time periods; treat the rest as exploratory.
+* A 강원특별자치도 cluster emerged after fixing a region-naming bug that had been splitting Gangwon-province cities into under-threshold entries (see `docs/validation_log.md`).
+* Confirmed annual seasonality: fires peak in March and winter months, statistically confirmed via STL/ACF — not just an artifact of averaging across years.
 
 
 ## Data
@@ -55,31 +27,10 @@ are not included in this repo; see `docs/data_inventory.md` for
 download details.
 
 ## Methodology Highlights
-- **Region identification bugs found and fixed**: yearly files used
-  inconsistent column names (e.g. `일시` vs `화재발생년월일`), and
-  district names alone are not unique identifiers — 중구 exists in 6
-  different cities nationwide, so an earlier version of this analysis
-  (comparing regions by name only) miscounted two different cities as
-  one persistent region. A second, separate bug was found later:
-  administrative renamings during 2015–2024 (강원도→강원특별자치도,
-  전라북도→전북특별자치도, 군위군 province reassignment, and 부천시's
-  district structure being abolished in 2016 and reinstated in 2024)
-  caused several regions to be split across two labels and
-  undercounted. Both are fixed by normalizing to a consistent
-  `(시도, 시군구)` identity before any aggregation. See
-  `docs/validation_log.md` for full details.
-- **Leave-one-out baseline**: when computing a region's "expected"
-  casualty rate from national place-type statistics, that region's
-  own data is excluded from the baseline to avoid its own extreme
-  values inflating its own benchmark.
-- **Worst-incident exclusion**: per-region statistics are recomputed
-  excluding each region's single most severe incident, to confirm
-  results aren't artifacts of one mass-casualty event (e.g. this
-  ruled out 과천시 and 밀양시 as false positives — see
-  `05_excess_risk_analysis.ipynb`).
-- **Primary analysis + sensitivity checks**: main results use a
-  300+ cumulative fires threshold (stated a priori); robustness
-  confirmed at 200 and 500 as well.
+* Data-quality bugs found and fixed: two separate region-identification bugs surfaced during this analysis — non-unique district names, and un-normalized administrative renamings — that would have skewed several results if left uncaught. See `docs/validation_log.md` for the full story.
+* Leave-one-out baseline: when computing a region's "expected" casualty rate from national place-type statistics, that region's own data is excluded from the baseline to avoid its own extreme values inflating its own benchmark.
+* Worst-incident exclusion: per-region statistics are recomputed excluding each region's single most severe incident, to confirm results aren't artifacts of one mass-casualty event (e.g. this ruled out 과천시 and 밀양시 as false positives — see `05_excess_risk_analysis.ipynb`).
+* Primary analysis + sensitivity checks: main results use a 300+ cumulative fires threshold (stated a priori); robustness confirmed at 200 and 500 as well.
 
 ## Limitations
 - These are correlational, exploratory findings, not causal claims.
